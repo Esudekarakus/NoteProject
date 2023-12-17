@@ -35,14 +35,14 @@ namespace NoteProject.UI
             string kullaniciAdi=txtKullaniciAdi.Text;
             string Parola=txtSifre.Text;
 
-           
-            var userDB=dbContext.Users.FirstOrDefault(x=>x.UserName==kullaniciAdi);
+
+            var userDB = dbContext.Users.FirstOrDefault(x => x.UserName == kullaniciAdi);
 
             var adminDb = dbContext.Admins.FirstOrDefault(x => x.UserName == kullaniciAdi);
 
             if (userDB != null )
             {
-
+                
                 var userSifre = dbContext.Users.FirstOrDefault(x => x.UserName == kullaniciAdi && x.Sifre == Parola);
                 var adminSifre = dbContext.Admins.FirstOrDefault(x => x.UserName == kullaniciAdi && x.Sifre == Parola);
                 if (userSifre == null  )
