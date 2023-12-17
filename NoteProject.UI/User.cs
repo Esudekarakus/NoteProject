@@ -18,7 +18,7 @@ namespace NoteProject.UI
         public string Sifre { get; set; }
 
         //default pasif
-        internal Durum Durum { get; set; } = Durum.Pasif;
+        public Durum Durum { get; set; } = Durum.Pasif;
         public ICollection<Notlar> Notlar { get; set; }
 
     }
