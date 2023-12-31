@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NoteProject.UI.context;
+using NoteProject.UI.model;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace NoteProject.UI
@@ -63,6 +65,7 @@ namespace NoteProject.UI
                         { userdb.Durum = Durum.Aktif; }
 
                         MessageBox.Show($"UserID: {userdb.UserID}, Yeni Durum: {userdb.Durum}");
+                        dbContext.Update(userdb);
                         dbContext.SaveChanges();
                     }
 

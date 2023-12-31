@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NoteProject.UI.context;
+using NoteProject.UI.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

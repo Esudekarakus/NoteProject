@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoteProject.UI
+namespace NoteProject.UI.model
 {
     public class User
     {
-        public int UserID {  get; set; }
-        public string Ad {  get; set; }
+        public int UserID { get; set; }
+        public string Ad { get; set; }
         public string Soyad { get; set; }
-        
+
         public string UserName { get; set; }
 
         public string Sifre { get; set; }

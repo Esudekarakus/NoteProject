@@ -4,7 +4,7 @@
 
 namespace NoteProject.UI.Migrations
 {
-    public partial class Init : Migration
+    public partial class app : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,6 +18,7 @@ namespace NoteProject.UI.Migrations
                     Soyad = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Sifre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Durum = table.Column<int>(type: "int", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -48,8 +49,8 @@ namespace NoteProject.UI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "UserID", "Ad", "Discriminator", "Sifre", "Soyad", "UserName" },
-                values: new object[] { 1, "Sude", "Admin", "123", "K", "admin" });
+                columns: new[] { "UserID", "Ad", "Discriminator", "Durum", "Sifre", "Soyad", "UserName" },
+                values: new object[] { 1, "Sude", "Admin", 1, "123", "K", "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Notlar_UserID",

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NoteProject.UI;
+using NoteProject.UI.context;
 
 #nullable disable
 
@@ -21,7 +21,7 @@ namespace NoteProject.UI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("NoteProject.UI.Notlar", b =>
+            modelBuilder.Entity("NoteProject.UI.model.Notlar", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -47,7 +47,7 @@ namespace NoteProject.UI.Migrations
                     b.ToTable("Notlar");
                 });
 
-            modelBuilder.Entity("NoteProject.UI.User", b =>
+            modelBuilder.Entity("NoteProject.UI.model.User", b =>
                 {
                     b.Property<int>("UserID")
                         .ValueGeneratedOnAdd()
@@ -62,6 +62,9 @@ namespace NoteProject.UI.Migrations
                     b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Durum")
+                        .HasColumnType("int");
 
                     b.Property<string>("Sifre")
                         .IsRequired()
@@ -82,9 +85,9 @@ namespace NoteProject.UI.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("User");
                 });
 
-            modelBuilder.Entity("NoteProject.UI.Admin", b =>
+            modelBuilder.Entity("NoteProject.UI.model.Admin", b =>
                 {
-                    b.HasBaseType("NoteProject.UI.User");
+                    b.HasBaseType("NoteProject.UI.model.User");
 
                     b.HasDiscriminator().HasValue("Admin");
 
@@ -93,22 +96,23 @@ namespace NoteProject.UI.Migrations
                         {
                             UserID = 1,
                             Ad = "Sude",
+                            Durum = 1,
                             Sifre = "123",
                             Soyad = "K",
                             UserName = "admin"
                         });
                 });
 
-            modelBuilder.Entity("NoteProject.UI.Notlar", b =>
+            modelBuilder.Entity("NoteProject.UI.model.Notlar", b =>
                 {
-                    b.HasOne("NoteProject.UI.User", null)
+                    b.HasOne("NoteProject.UI.model.User", null)
                         .WithMany("Notlar")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("NoteProject.UI.User", b =>
+            modelBuilder.Entity("NoteProject.UI.model.User", b =>
                 {
                     b.Navigation("Notlar");
                 });

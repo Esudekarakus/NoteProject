@@ -1,18 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NoteProject.UI.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoteProject.UI
+namespace NoteProject.UI.context
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet <Admin> Admins { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
-        public DbSet <Notlar> Notlar { get; set; }
+        public DbSet<Notlar> Notlar { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -26,8 +27,9 @@ namespace NoteProject.UI
                 new Admin
                 { UserID = 1, Ad = "Sude", Soyad = "K", Sifre = "123", UserName = "admin" }
                 );
-            
+
             base.OnModelCreating(modelBuilder);
         }
     }
 }
+

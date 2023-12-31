@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoteProject.UI
+namespace NoteProject.UI.model
 {
-    public class Admin:User
+    public class Admin : User
     {
 
     }
